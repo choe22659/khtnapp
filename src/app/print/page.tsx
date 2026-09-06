@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 interface Slide {
@@ -19,7 +19,8 @@ interface LessonData {
   slides: Slide[];
 }
 
-export default function PrintLessonPage() {
+// 1. Component con chứa toàn bộ logic xử lý dữ liệu và dùng useSearchParams
+function PrintLessonContent() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
   const [lesson, setLesson] = useState<LessonData | null>(null);
@@ -114,5 +115,14 @@ export default function PrintLessonPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// 2. Component chính export mặc định được bọc trong Suspense
+export default function PrintLessonPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-xs text-slate-500">Đang tải trang in...</div>}>
+      <PrintLessonContent />
+    </Suspense>
   );
 }
