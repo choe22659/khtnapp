@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import MathView from './MathView';
+import mhchem from 'mhchem' ;
 import { CheckCircle2, XCircle, HelpCircle } from 'lucide-react';
 
 interface McqQuizProps {
