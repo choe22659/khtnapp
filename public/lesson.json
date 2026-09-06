@@ -1,0 +1,177 @@
+{
+  "title": "KHTN 8: Chủ đề Oxide - Khái niệm và Tính chất hóa học",
+  "slides": [
+    {
+      "id": 1,
+      "type": "content",
+      "title": "1. Khái niệm và Công thức chung của Oxide",
+      "content": "Oxide là hợp chất gồm 2 nguyên tố, trong đó có một nguyên tố là oxygen. Công thức hóa học chung của oxide có dạng $M_xO_y$.",
+      "formula": "M_xO_y",
+      "note": "M là ký hiệu của nguyên tố (kim loại hoặc phi kim), x và y lần lượt là chỉ số nguyên tử của M và O."
+    },
+    {
+      "id": 2,
+      "type": "content",
+      "title": "2. Phân loại Oxide",
+      "content": "Dựa vào tính chất hóa học, oxide được chia thành 4 loại chính:\n- Oxide acid: Thường là oxide của phi kim, tương ứng với một acid ($CO_2, SO_2, P_2O_5$).\n- Oxide base: Thường là oxide của kim loại, tương ứng với một base ($CaO, Na_2O, CuO$).\n- Oxide lưỡng tính: Tác dụng được với cả dung dịch acid và dung dịch base ($Al_2O_3, ZnO$).\n- Oxide trung tính: Không tác dụng với acid, base, nước ($CO, NO$).",
+      "formula": "\\text{Oxide} \\rightarrow \\begin{cases} \\text{Oxide acid} \\\\ \\text{Oxide base} \\\\ \\text{Oxide lưỡng tính} \\\\ \\text{Oxide trung tính} \\end{cases}",
+      "note": "Hầu hết oxide của kim loại là oxide base, hầu hết oxide của phi kim là oxide acid."
+    },
+    {
+      "id": 3,
+      "type": "content",
+      "title": "3. Tính chất hóa học của Oxide base",
+      "content": "1) Một số oxide base tác dụng với nước tạo thành dung dịch base (kiềm): $Na_2O + H_2O \\rightarrow 2NaOH$\n2) Tác dụng với dung dịch acid tạo thành muối và nước: $CuO + 2HCl \\rightarrow CuCl_2 + H_2O$",
+      "formula": "\\text{Oxide base} + \\text{Acid} \\rightarrow \\text{Muối} + \\text{Nước}",
+      "note": "Chỉ các oxide base như $Na_2O, K_2O, CaO, BaO$ mới phản ứng dễ dàng với nước ở nhiệt độ thường."
+    },
+    {
+      "id": 4,
+      "type": "content",
+      "title": "4. Tính chất hóa học của Oxide acid",
+      "content": "1) Tác dụng với nước tạo thành dung dịch acid: $P_2O_5 + 3H_2O \\rightarrow 2H_3PO_4$\n2) Tác dụng với dung dịch base tạo thành muối và nước: $CO_2 + Ca(OH)_2 \\rightarrow CaCO_3\\downarrow + H_2O$",
+      "formula": "\\text{Oxide acid} + \\text{Dung dịch Base} \\rightarrow \\text{Muối} + \\text{Nước}",
+      "note": "Phản ứng của $CO_2$ làm đục dung dịch nước vôi trong $Ca(OH)_2$ dùng để nhận biết khí $CO_2$."
+    },
+    {
+      "id": 5,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 1",
+      "question": "Oxide là hợp chất gồm mấy nguyên tố, trong đó nhất thiết phải có nguyên tố nào?",
+      "options": [
+        "A. 2 nguyên tố, trong đó có hydrogen",
+        "B. 2 nguyên tố, trong đó có oxygen",
+        "C. 3 nguyên tố, trong đó có oxygen",
+        "D. Nhiều nguyên tố bất kỳ"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Khái niệm: Oxide là hợp chất gồm 2 nguyên tố, trong đó có một nguyên tố là oxygen."
+    },
+    {
+      "id": 6,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 2",
+      "question": "Dãy chất nào sau đây chỉ gồm các oxide base?",
+      "options": [
+        "A. $CaO, Na_2O, CuO$",
+        "B. $CO_2, SO_2, P_2O_5$",
+        "C. $CO, NO, CaO$",
+        "D. $Al_2O_3, SO_3, K_2O$"
+      ],
+      "correctAnswer": 0,
+      "explanation": "$CaO, Na_2O, CuO$ đều là oxide của kim loại tương ứng với các base tương ứng."
+    },
+    {
+      "id": 7,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 3",
+      "question": "Dãy chất nào sau đây chỉ gồm các oxide acid?",
+      "options": [
+        "A. $CuO, BaO, Na_2O$",
+        "B. $SO_2, CO_2, P_2O_5$",
+        "C. $CO, NO, P_2O_5$",
+        "D. $CaO, SO_3, MgO$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "$SO_2, CO_2, P_2O_5$ là các oxide của phi kim tương ứng với các acid ($H_2SO_3, H_2CO_3, H_3PO_4$)."
+    },
+    {
+      "id": 8,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 4",
+      "question": "Oxide nào sau đây là oxide trung tính (không tạo muối)?",
+      "options": [
+        "A. $CO_2$",
+        "B. $CaO$",
+        "C. $CO$",
+        "D. $SO_2$"
+      ],
+      "correctAnswer": 2,
+      "explanation": "$CO$ và $NO$ là các oxide không tạo muối (oxide trung tính), không phản ứng với acid, base hay nước ở điều kiện thường."
+    },
+    {
+      "id": 9,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 5",
+      "question": "Hòa tan oxide nào sau đây vào nước thu được dung dịch làm quỳ tím hóa đỏ?",
+      "options": [
+        "A. $CaO$",
+        "B. $Na_2O$",
+        "C. $P_2O_5$",
+        "D. $CuO$"
+      ],
+      "correctAnswer": 2,
+      "explanation": "$P_2O_5 + 3H_2O \\rightarrow 2H_3PO_4$. Dung dịch acid $H_3PO_4$ làm quỳ tím hóa đỏ."
+    },
+    {
+      "id": 10,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 6",
+      "question": "Sản phẩm thu được khi cho $CaO$ tác dụng với dung dịch $HCl$ là gì?",
+      "options": [
+        "A. $CaCl_2 + H_2O$",
+        "B. $CaCl_2 + H_2$",
+        "C. $Ca(OH)_2 + Cl_2$",
+        "D. $CaCl + H_2O$"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phản ứng giữa oxide base và acid tạo ra muối và nước: $CaO + 2HCl \\rightarrow CaCl_2 + H_2O$."
+    },
+    {
+      "id": 11,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 7",
+      "question": "Khí nào sau đây phản ứng với dung dịch nước vôi trong $Ca(OH)_2$ tạo kết tủa trắng?",
+      "options": [
+        "A. $O_2$",
+        "B. $H_2$",
+        "C. $CO_2$",
+        "D. $N_2$"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Phương trình phản ứng: $CO_2 + Ca(OH)_2 \\rightarrow CaCO_3\\downarrow + H_2O$. Kết tủa $CaCO_3$ làm đục nước vôi trong."
+    },
+    {
+      "id": 12,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 8",
+      "question": "Oxide nào dưới đây là oxide lưỡng tính?",
+      "options": [
+        "A. $Al_2O_3$",
+        "B. $Na_2O$",
+        "C. $CO_2$",
+        "D. $CaO$"
+      ],
+      "correctAnswer": 0,
+      "explanation": "$Al_2O_3$ tác dụng được với cả dung dịch acid (như $HCl$) và dung dịch base (như $NaOH$) nên là oxide lưỡng tính."
+    },
+    {
+      "id": 13,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 9",
+      "question": "Hòa tan $Na_2O$ vào nước, dung dịch thu được làm quỳ tím chuyển sang màu gì?",
+      "options": [
+        "A. Đỏ",
+        "B. Xanh",
+        "C. Không đổi màu",
+        "D. Mất màu"
+      ],
+      "correctAnswer": 1,
+      "explanation": "$Na_2O + H_2O \\rightarrow 2NaOH$. Dung dịch $NaOH$ có tính base làm quỳ tím chuyển sang màu xanh."
+    },
+    {
+      "id": 14,
+      "type": "quiz_mcq",
+      "title": "🏆 Gameshow: Luyện tập - Câu 10",
+      "question": "Công thức hóa học của Diphosphorus pentoxide là:",
+      "options": [
+        "A. $PO_2$",
+        "B. $P_2O_3$",
+        "C. $P_2O_5$",
+        "D. $PO$"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Tiền tố 'di-' nghĩa là 2 ($P_2$), 'penta-' nghĩa là 5 ($O_5$). Do đó công thức là $P_2O_5$."
+    }
+  ]
+}

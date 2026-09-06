@@ -1,0 +1,93 @@
+const handleExportPPTX = () => {
+  const pptx = new pptxgen();
+
+  // Đặt tỉ lệ khung hình 16:9
+  pptx.layout = "LAYOUT_16x9";
+
+  // Slide tiêu đề bài học
+  const titleSlide = pptx.addSlide();
+  titleSlide.addText(lesson.title, {
+    x: 1,
+    y: 1.5,
+    w: "80%",
+    h: 1.5,
+    fontSize: 28,
+    bold: true,
+    color: "003366",
+    align: "center",
+  });
+  titleSlide.addText(
+    `Bộ sách: ${lesson.bookSeries} | Khối: ${lesson.grade} | Đối tượng: ${lesson.studentLevel}`,
+    {
+      x: 1,
+      y: 3.2,
+      w: "80%",
+      h: 0.8,
+      fontSize: 16,
+      color: "555555",
+      align: "center",
+    }
+  );
+
+  // Tạo từng Slide nội dung
+  lesson.slides.forEach((slide, idx) => {
+    const s = pptx.addSlide();
+
+    // Tiêu đề Slide
+    s.addText(`${idx + 1}. ${slide.title}`, {
+      x: 0.8,
+      y: 0.6,
+      w: "85%",
+      h: 0.8,
+      fontSize: 22,
+      bold: true,
+      color: "003366",
+    });
+
+    // Nội dung Slide
+    s.addText(slide.content, {
+      x: 0.8,
+      y: 1.6,
+      w: "85%",
+      h: 3.5,
+      fontSize: 16,
+      color: "333333",
+      valign: "top",
+    });
+
+    // Nếu có công thức
+    if (slide.formula) {
+      s.addText(`Công thức: ${slide.formula}`, {
+        x: 0.8,
+        y: 5.2,
+        w: "85%",
+        h: 0.8,
+        fontSize: 18,
+        bold: true,
+        color: "008000",
+      });
+    }
+
+    // Nếu có link thí nghiệm
+    if (slide.simulationUrl) {
+      s.addText(`Link thí nghiệm ảo: ${slide.simulationUrl}`, {
+        x: 0.8,
+        y: 6.0,
+        w: "85%",
+        h: 0.5,
+        fontSize: 12,
+        color: "0000FF",
+        hyperlink: { url: slide.simulationUrl },
+      });
+    }
+  });
+
+  // Tải file về máy
+  pptx.writeFile({ fileName: `${lesson.title.replace(/\s+/g, "_")}.pptx` });
+};
+<button 
+  onClick={handleExportPPTX}
+  className="flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition"
+>
+  <Download className="w-4 h-4" /> Xuất PPTX
+</button>

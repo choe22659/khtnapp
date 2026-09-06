@@ -1,0 +1,88 @@
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css');
+@import "tailwindcss";
+
+:root {
+  --background: #f0f9ff;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* Custom UI nút bấm nổi 3D */
+.btn-pop {
+  transition: all 0.15s ease;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 1rem;
+  border-bottom-width: 4px;
+  border-right-width: 2px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-pop:active {
+  transform: translateY(4px);
+  box-shadow: none !important;
+}
+
+.btn-pop-primary {
+  background-color: #6366f1;
+  color: #ffffff;
+  border-color: #4338ca;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+}
+
+.btn-pop-success {
+  background-color: #10b981;
+  color: #ffffff;
+  border-color: #047857;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+.btn-pop-warning {
+  background-color: #fbbf24;
+  color: #0f172a;
+  border-color: #d97706;
+  box-shadow: 0 10px 15px -3px rgba(251, 191, 36, 0.3);
+}
+
+.btn-pop-purple {
+  background-color: #a855f7;
+  color: #ffffff;
+  border-color: #7e22ce;
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+}
+
+.card-pop {
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgba(226, 232, 240, 0.8);
+  transition: all 0.2s ease;
+}
+
+.dark .card-pop {
+  background-color: #1e293b;
+  border-color: #334155;
+  box-shadow: none;
+}
+
+.katex-display {
+  margin: 1em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+}

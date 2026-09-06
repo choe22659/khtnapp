@@ -1,0 +1,127 @@
+[
+  {
+    "id": "lesson_1788618500551",
+    "title": "Bài 2. Nguyên tử",
+    "grade": "7",
+    "curriculum": "Kết nối tri thức",
+    "createdAt": "5/9/2026",
+    "slides": [
+      {
+        "type": "content",
+        "title": "1. Khởi động & Đặt vấn đề",
+        "content": "• Nếu ta chia nhỏ một đoạn dây đồng hay một giọt nước liên tục, liệu quá trình này có kéo dài mãi mãi không?\n• Mọi chất trong tự nhiên đều được tạo nên từ những hạt cực kỳ nhỏ bé, không thể chia nhỏ hơn nữa bằng các phương pháp hóa học thông thường. Hạt đó được gọi là **NGUYÊN TỬ**.\n• Lớp học hôm nay sẽ giúp chúng ta khám phá thế giới siêu nhỏ bên trong nguyên tử!",
+        "formula": ""
+      },
+      {
+        "type": "content",
+        "title": "2. Mô hình nguyên tử Rutherford - Bohr",
+        "content": "• Theo mô hình Rutherford - Bohr (mô hình hành tinh nguyên tử):\n  - Nguyên tử có cấu tạo gồm 2 phần: **Hạt nhân** ở tâm và **Vỏ nguyên tử** bao quanh.\n  - Các electron chuyển động rất nhanh xung quanh hạt nhân trên các quỹ đạo xác định (tương tự các hành tinh quay quanh Mặt Trời).\n  - Các electron được sắp xếp thành từng **lớp electron** từ trong ra ngoài.",
+        "formula": ""
+      },
+      {
+        "type": "content",
+        "title": "3. Cấu tạo Hạt nhân nguyên tử",
+        "content": "• Hạt nhân nằm ở tâm nguyên tử, gồm 2 loại hạt cơ bản:\n  1. **Proton (kí hiệu: p)**: Mang điện tích dương (+1).\n  2. **Neutron (kí hiệu: n)**: Không mang điện (điện tích = 0).\n• Các proton và neutron có khối lượng gần bằng nhau và tập trung hầu hết khối lượng của nguyên tử.",
+        "formula": "q_p = +1 \\quad | \\quad q_n = 0"
+      },
+      {
+        "type": "content",
+        "title": "4. Cấu tạo Vỏ nguyên tử",
+        "content": "• Vỏ nguyên tử gồm các **Electron (kí hiệu: e)**:\n  - Electron mang điện tích âm (-1).\n  - Khối lượng của electron rất nhỏ, không đáng kể so với proton và neutron.\n• Các electron sắp xếp thành các lớp electron:\n  - Lớp thứ 1 (gần hạt nhân nhất): Tối đa 2 electron.\n  - Lớp thứ 2: Tối đa 8 electron.\n  - Lớp thứ 3: Tối đa 8 hoặc 18 electron.",
+        "formula": "q_e = -1"
+      },
+      {
+        "type": "content",
+        "title": "5. Sự trung hòa về điện của nguyên tử",
+        "content": "• Trong một nguyên tử, tổng điện tích dương của hạt nhân luôn bằng tổng điện tích âm của các electron ở vỏ.\n• Do đó: **Số proton (p) = Số electron (e)**.\n• Nguyên tử bình thường trung hòa về điện (không mang điện).\n• Ví dụ: Nguyên tử Carbon có 6 proton trong hạt nhân thì vỏ cũng có 6 electron.",
+        "formula": "\\text{Số } p = \\text{Số } e"
+      },
+      {
+        "type": "content",
+        "title": "6. Khối lượng nguyên tử & Đơn vị amu",
+        "content": "• Nguyên tử có khối lượng vô cùng nhỏ bé. Để đo khối lượng nguyên tử, người ta dùng đơn vị **amu** (atomic mass unit).\n• $1\\text{ amu} \\approx 1{,}6605 \\times 10^{-24}\\text{ g}$.\n• Khối lượng hạt p $\\approx 1\\text{ amu}$, hạt n $\\approx 1\\text{ amu}$, hạt e $\\approx 0{,}00055\\text{ amu}$ (rất nhỏ).\n• Do khối lượng e rất nhỏ, nên **Khối lượng nguyên tử \\approx Khối lượng hạt nhân**.",
+        "formula": "m_{\\text{nguyên tử}} \\approx m_{\\text{hạt nhân}} = m_p + m_n"
+      },
+      {
+        "type": "content",
+        "title": "7. Sơ đồ tư duy: Cấu trúc nguyên tử",
+        "content": "🌳 **SƠ ĐỒ TƯ DUY NGUYÊN TỬ**\n\n  └── **NGUYÊN TỬ** (Trung hòa về điện, $p = e$)\n      ├── **1. HẠT NHÂN** (Ở tâm, mang điện tích dương)\n      │   ├── **Proton (p)**: Điện tích +1, khối lượng $\\approx 1\\text{ amu}$\n      │   └── **Neutron (n)**: Không mang điện, khối lượng $\\approx 1\\text{ amu}$\n      └── **2. VỎ NGUYÊN TỬ** (Chứa electron)\n          └── **Electron (e)**: Điện tích -1, khối lượng không đáng kể, xếp thành từng lớp.",
+        "formula": ""
+      },
+      {
+        "type": "embed",
+        "title": "8. Mô phỏng tương tác: Xây dựng nguyên tử",
+        "embedUrl": "https://phet.colorado.edu/sims/html/build-an-atom/latest/build-an-atom_all.html?locale=vi",
+        "embedType": "url"
+      },
+      {
+        "type": "extension",
+        "title": "9. Mở rộng: Kích thước và khoảng trống trong nguyên tử",
+        "extraKnowledge": "• Nguyên tử có kích thước siêu nhỏ, khoảng $10^{-10}\\text{ m}$ ($0{,}1\\text{ nm}$).\n• Nếu phóng đại hạt nhân nguyên tử bằng một quả bóng đá (đường kính $22\\text{ cm}$) đặt ở giữa sân vận động, thì electron gần nhất sẽ nằm tận trên khán đài!\n• Như vậy, nguyên tử hầu như là **khoảng trống rỗng**.",
+        "formula": "d_{\\text{nguyên tử}} \\approx 10^4 \\cdot d_{\\text{hạt nhân}}"
+      },
+      {
+        "type": "quiz_mcq",
+        "title": "10. Củng cố kiến thức - Câu 1",
+        "question": "Hạt nào sau đây mang điện tích âm trong nguyên tử?",
+        "options": [
+          "A. Proton",
+          "B. Electron",
+          "C. Neutron",
+          "D. Hạt nhân"
+        ],
+        "answer": 1,
+        "explanation": "Electron (kí hiệu e) mang điện tích âm (-1) và chuyển động xung quanh hạt nhân."
+      },
+      {
+        "type": "quiz_mcq",
+        "title": "11. Củng cố kiến thức - Câu 2",
+        "question": "Một nguyên tử có 8 proton trong hạt nhân. Số electron ở vỏ nguyên tử đó là bao nhiêu?",
+        "options": [
+          "A. 4",
+          "B. 8",
+          "C. 16",
+          "D. 2"
+        ],
+        "answer": 1,
+        "explanation": "Vì nguyên tử trung hòa về điện nên Số electron = Số proton = 8."
+      },
+      {
+        "type": "quiz_mcq",
+        "title": "12. Củng cố kiến thức - Câu 3",
+        "question": "Khối lượng của nguyên tử tập trung chủ yếu ở đâu?",
+        "options": [
+          "A. Ở lớp vỏ electron",
+          "B. Ở hạt nhân",
+          "C. Phân bố đều toàn nguyên tử",
+          "D. Ở các electron ngoài cùng"
+        ],
+        "answer": 1,
+        "explanation": "Vì electron có khối lượng rất nhỏ (không đáng kể), khối lượng nguyên tử coi như bằng khối lượng hạt nhân (proton + neutron)."
+      },
+      {
+        "type": "content",
+        "title": "13. Luyện tập: Bài toán xác định số hạt",
+        "content": "• **Dạng bài cơ bản**: Cho tổng số hạt trong nguyên tử là 18, biết số hạt không mang điện (neutron) là 6. Tìm số hạt proton và electron.\n• **Hướng dẫn giải**:\n  1. Gọi tổng số hạt là: $P + N + E = 18$.\n  2. Vì $P = E$ nên $2P + N = 18$.\n  3. Thay $N = 6$: $2P + 6 = 18 \\Rightarrow 2P = 12 \\Rightarrow P = 6$.\n  4. Kết luận: Số $p = 6$, số $e = 6$, số $n = 6$. (Đây là nguyên tử Carbon).",
+        "formula": "\\text{Tổng số hạt} = 2P + N"
+      },
+      {
+        "type": "content",
+        "title": "14. Tổng kết & Dặn dò",
+        "content": "• **Ghi nhớ kiến thức cốt lõi**:\n  - Cấu tạo nguyên tử: Hạt nhân (p, n) + Vỏ (e).\n  - Nguyên tử trung hòa về điện ($p = e$).\n  - $m_{\\text{nguyên tử}} \\approx m_{\\text{hạt nhân}}$.\n• **Nhiệm vụ về nhà**:\n  1. Học thuộc sơ đồ tư duy nguyên tử.\n  2. Làm bài tập 2.1 đến 2.5 trong Sách bài tập KHTN 7 (Kết nối tri thức).\n  3. Chuẩn bị trước Bài 3: Nguyên tố hóa học.",
+        "formula": ""
+      }
+    ],
+    "teacherNote": "10-15 slides có sơ đồ tư duy ",
+    "studentLevel": "Đại trà / Trung bình",
+    "yccd": "",
+    "unit": "Chương 1: Nguyên tử. Nguyên tố hóa học. Sơ lược về bảng tuần hoàn các nguyên tố hóa học",
+    "objectives": [
+      "Trình bày được mô hình nguyên tử Rutherford - Bohr (mô hình đơn giản).",
+      "Nêu được cấu tạo nguyên tử gồm hạt nhân (proton mang điện tích dương, neutron không mang điện) và vỏ nguyên tử chứa các electron mang điện tích âm.",
+      "Giải thích được nguyên tử trung hòa về điện và mối quan hệ giữa số proton và số electron.",
+      "Nêu được khối lượng nguyên tử theo đơn vị amu (atomic mass unit).",
+      "Phát triển năng lực tự học, quan sát hình ảnh mô phỏng và tư duy logic cho học sinh đại trà."
+    ]
+  }
+]
