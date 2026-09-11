@@ -3,46 +3,9 @@
   "title": "Bài 8. Acid",
   "grade": 8,
   "subject": "Hóa học",
-  "bookSeries": "Kết nối tri thức với cuộc sống",
-  "objectives": [
-    "Hiểu khái niệm Acid",
-    "Nắm tính chất hóa học",
-    "Vận dụng kiến thức vào thực tiễn và nhận biết phản ứng"
-  ],
-  "slides": [
-    {
-      "id": "slide_1",
-      "title": "Khởi động & Kiểm tra kiến thức nền",
-      "type": "simulation",
-      "simulationId": "1788674912469",
-      "content": "Sử dụng bộ Flashcard tương tác để ôn tập nhanh các khái niệm nền tảng về Năng lượng, Dấu hiệu phản ứng và Cấu tạo chất trước khi vào bài mới.",
-      "teacherGuidance": "Cho học sinh chuyển sang chế độ 'Ghép Thẻ' hoặc 'Trắc Nghiệm' trên Flashcard để tạo không khí thi đua đầu giờ."
-    },
-    {
-      "id": "slide_2",
-      "title": "Khám phá cấu tạo nguyên tử Oxygen (O)",
-      "type": "simulation",
-      "simulationId": "1788674999565",
-      "content": "Quan sát mô hình 3D nguyên tử Oxygen để hiểu về lớp electron ngoài cùng, khả năng nhận electron tạo ion Oxide (O²⁻) - thành phần quan trọng trong các phản ứng oxy hóa và tạo Acid/Base.",
-      "teacherGuidance": "Hướng dẫn HS xoay mô hình 3D, chuyển đổi giữa 'Mô hình Bohr' và 'Obitan', sau đó chọn dạng ion O²⁻ để quan sát lớp vỏ electron bão hòa."
-    },
-    {
-      "id": "slide_3",
-      "title": "Mô phỏng Thí nghiệm Phản ứng Hóa học",
-      "type": "simulation",
-      "simulationId": "1788674959924",
-      "content": "Thực hiện các nhiệm vụ phòng thí nghiệm ảo để nhận biết dấu hiệu phản ứng của Acid (ví dụ: Na₂CO₃ + HCl thoát khí CO₂↑).",
-      "teacherGuidance": "Chia lớp thành các đội (Đội Nguyên Tử, Đội Phân Tử...) chơi Trò chơi Phòng thí nghiệm kỳ diệu. Yêu cầu HS ghi nhận hiện tượng tạo bọt khí CO₂ khi acid tác dụng với muối carbonate."
-    },
-    {
-      "id": "slide_4",
-      "title": "Mô phỏng bổ trợ: Quang học & Sinh học",
-      "type": "simulation",
-      "simulationId": "1788674934861",
-      "content": "Mô phỏng PhET Thấu kính & Mô hình Tế bào 3D phục vụ tích hợp liên môn KHTN (Vật lý - Sinh học) khi mở rộng bài học.",
-      "teacherGuidance": "Sử dụng cho các bài tập dự án hoặc liên môn tích hợp KHTN 8."
-    }
-  ],
+  "bookSeries": "Chân trời sáng tạo",
+  "objectives": ["Hiểu khái niệm Acid", "Nắm tính chất hóa học"],
+  "slides": [],
   "mindmap": {
     "nodes": [
       {
@@ -68,85 +31,5 @@
       { "id": "e1", "source": "root", "target": "1", "animated": true },
       { "id": "e2", "source": "root", "target": "2", "animated": true }
     ]
-  },
-  "simulations": [
-    {
-      "id": "1788675019396",
-      "title": "Tế bào",
-      "subject": "Sinh Học",
-      "grade": "Mọi lớp",
-      "url": "https://sketchfab.com/models/b6ae11c611b44e0991d08f8c5a0bf3c7/embed",
-      "embedUrl": "https://sketchfab.com/models/b6ae11c611b44e0991d08f8c5a0bf3c7/embed",
-      "embedHtml": "<div class=\"sketchfab-embed-wrapper\"> <iframe title=\"Tế Bào Thực Vật\" frameborder=\"0\" allowfullscreen mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\" allow=\"autoplay; fullscreen; xr-spatial-tracking\" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width=\"640\" height=\"480\" src=\"https://sketchfab.com/models/b6ae11c611b44e0991d08f8c5a0bf3c7/embed\"> </iframe></div>",
-      "embedType": "url",
-      "description": "Thí nghiệm mô phỏng do Thầy/Cô thiết lập. (Sinh Học)",
-      "guideSteps": [
-        "Tương tác trực tiếp với các thiết bị và quan sát kết quả."
-      ],
-      "isTeacherCreated": true
-    },
-    {
-      "id": "1788674999565",
-      "title": "Mô hình nguyên tử Oxygen",
-      "subject": "Hóa Học",
-      "grade": "Mọi lớp",
-      "url": "",
-      "embedUrl": "",
-      "embedHtml": "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Mô Hình 3D Nguyên Tử Oxygen (Oxygen 3D Atom Model)</title>\n</head>\n<body>\n    <!-- Chi tiết mô phỏng 3D Oxygen -->\n</body>\n</html>",
-      "embedType": "html",
-      "description": "Thí nghiệm mô phỏng do Thầy/Cô thiết lập. (Hóa Học)",
-      "guideSteps": [
-        "Xoay không gian 3D quan sát các lớp electron.",
-        "Chuyển đổi dạng Ion O²⁻ để xem sự thay đổi số lượng electron."
-      ],
-      "isTeacherCreated": true
-    },
-    {
-      "id": "1788674959924",
-      "title": "KHTN 8 - Phản ứng hóa học",
-      "subject": "Hóa Học",
-      "grade": "Mọi lớp",
-      "url": "",
-      "embedUrl": "",
-      "embedHtml": "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Phòng thí nghiệm kỳ diệu - KHTN</title>\n</head>\n<body>\n    <!-- Nội dung trò chơi phản ứng hóa học -->\n</body>\n</html>",
-      "embedType": "html",
-      "description": "Thí nghiệm mô phỏng do Thầy/Cô thiết lập. (Hóa Học)",
-      "guideSteps": [
-        "Chọn đội chơi.",
-        "Quan sát hiện tượng thí nghiệm mô phỏng và trả lời câu hỏi."
-      ],
-      "isTeacherCreated": true
-    },
-    {
-      "id": "1788674934861",
-      "title": "Thấu kính",
-      "subject": "Vật Lý",
-      "grade": "Mọi lớp",
-      "url": "https://phet.colorado.edu/sims/html/geometric-optics-basics/latest/geometric-optics-basics_en.html",
-      "embedUrl": "https://phet.colorado.edu/sims/html/geometric-optics-basics/latest/geometric-optics-basics_en.html",
-      "embedHtml": "<iframe src=\"https://phet.colorado.edu/sims/html/geometric-optics-basics/latest/geometric-optics-basics_en.html\" width=\"800\" height=\"600\" allowfullscreen></iframe>",
-      "embedType": "url",
-      "description": "Thí nghiệm mô phỏng do Thầy/Cô thiết lập. (Vật Lý)",
-      "guideSteps": [
-        "Tương tác trực tiếp với các thiết bị và quan sát kết quả."
-      ],
-      "isTeacherCreated": true
-    },
-    {
-      "id": "1788674912469",
-      "title": "KHTN 9 - Flash card chương 1",
-      "subject": "Vật Lý",
-      "grade": "Mọi lớp",
-      "url": "",
-      "embedUrl": "",
-      "embedHtml": "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Game Flashcard - Năng lượng cơ học KHTN 9</title>\n</head>\n<body>\n    <!-- Game Flashcard -->\n</body>\n</html>",
-      "embedType": "html",
-      "description": "Thí nghiệm mô phỏng do Thầy/Cô thiết lập. (Vật Lý)",
-      "guideSteps": [
-        "Lật thẻ học khái niệm.",
-        "Sử dụng các chế độ Ghép thẻ, Trắc nghiệm và Tốc độ để củng cố."
-      ],
-      "isTeacherCreated": true
-    }
-  ]
+  }
 }
