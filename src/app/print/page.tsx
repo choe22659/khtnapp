@@ -2,6 +2,7 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { supabase } from '@/lib/supabase'
 
 interface Slide {
   type: 'content' | 'quiz_mcq' | 'flashcard';
@@ -26,18 +27,24 @@ function PrintLessonContent() {
   const [lesson, setLesson] = useState<LessonData | null>(null);
 
   useEffect(() => {
-    if (id) {
-      const saved = localStorage.getItem('khtn_saved_lessons');
-      if (saved) {
-        try {
-          const list: LessonData[] = JSON.parse(saved);
-          const found = list.find((item) => item.id === id);
-          if (found) setLesson(found);
-        } catch (e) {
-          console.error(e);
-        }
+    async function fetchLessonFromCloud() {
+      if (!id) return;
+      
+      // Lấy dữ liệu từ bảng 'lessons' trên Supabase
+      const { data, error } = await supabase
+        .from('lessons')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (data) {
+        setLesson(data);
+      } else if (error) {
+        console.error("Lỗi khi tải bài từ Cloud:", error.message);
       }
     }
+    
+    fetchLessonFromCloud();
   }, [id]);
 
   if (!lesson) {
