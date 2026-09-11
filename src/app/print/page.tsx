@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { supabase } from '@/lib/supabase'
+import { useSearchParams } from 'next/navigation'
+import { supabase } from '@/lib/supabase';
 
 interface Slide {
   type: 'content' | 'quiz_mcq' | 'flashcard';

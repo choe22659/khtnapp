@@ -1,10 +1,9 @@
-// src/app/page.tsx
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { QRCodeSVG } from "qrcode.react";
-import { QrCode, X, Share2, Copy, Check } from "lucide-react";
+import { QrCode, X, Share2, Copy, Check, Search, Filter, BookOpen, Trash2, Calendar, Layers } from "lucide-react";
 
 interface LessonData {
   id: string;
@@ -19,14 +18,21 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // Hàm tải danh sách bài giảng an toàn từ API
-  // Hàm tải danh sách bài giảng an toàn (kết hợp localStorage + API dự phòng)
+  // State hỗ trợ Lọc & Tìm kiếm
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedGrade, setSelectedGrade] = useState<string>('ALL');
+
+  // State quản lý Modal Mã QR & Chia sẻ
+  const [activeQrLesson, setActiveQrLesson] = useState<{ id: string; title: string } | null>(null);
+  const [copied, setCopied] = useState<boolean>(false);
+
+  // Hàm tải danh sách bài giảng (kết hợp localStorage + API dự phòng)
   const fetchLessons = useCallback(async (signal?: AbortSignal) => {
     try {
       setLoading(true);
       setErrorMsg(null);
 
-      // 1. Kiểm tra và đọc bài giảng lưu trong localStorage trước
+      // 1. Đọc bài giảng lưu trong localStorage
       const localData = localStorage.getItem('khtn_saved_lessons');
       let localLessons: LessonData[] = [];
 
@@ -38,7 +44,7 @@ export default function HomePage() {
         }
       }
 
-      // 2. Đồng thời gọi API Server để lấy bài giảng (nếu có)
+      // 2. Đồng thời gọi API Server để lấy bài giảng
       let serverLessons: LessonData[] = [];
       try {
         const res = await fetch('/api/lessons', {
@@ -59,10 +65,10 @@ export default function HomePage() {
         console.warn('Không thể kết nối API Server, sử dụng dữ liệu LocalStorage:', apiErr);
       }
 
-      // 3. Gộp bài giảng từ LocalStorage và Server (loại bỏ trùng lặp theo title hoặc id)
+      // 3. Gộp bài giảng từ LocalStorage và Server (loại bỏ trùng lặp)
       const combined = [...localLessons];
       serverLessons.forEach((sItem) => {
-        if (!combined.some((lItem) => lItem.title === sItem.title)) {
+        if (!combined.some((lItem) => lItem.id === sItem.id || lItem.title === sItem.title)) {
           combined.push(sItem);
         }
       });
@@ -71,7 +77,7 @@ export default function HomePage() {
     } catch (error: any) {
       if (error.name !== 'AbortError') {
         console.error('Lỗi khi tải danh sách bài giảng:', error);
-        setErrorMsg('Lỗi khi tải bài giảng. Vui lòng thử lại sau.');
+        setErrorMsg('Lỗi khi tải danh sách bài giảng. Vui lòng thử lại sau.');
       }
     } finally {
       setLoading(false);
@@ -86,6 +92,35 @@ export default function HomePage() {
       controller.abort();
     };
   }, [fetchLessons]);
+
+  // Xóa bài giảng khỏi LocalStorage
+  const handleDeleteLesson = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (confirm('Bạn có chắc chắn muốn xóa bài giảng này khỏi bộ nhớ máy?')) {
+      const updated = lessons.filter((l) => l.id !== id);
+      setLessons(updated);
+      localStorage.setItem('khtn_saved_lessons', JSON.stringify(updated));
+    }
+  };
+
+  // Lọc bài giảng theo Từ khóa & Khối lớp
+  const filteredLessons = useMemo(() => {
+    return lessons.filter((lesson) => {
+      const matchesSearch = lesson.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesGrade = selectedGrade === 'ALL' || lesson.grade === selectedGrade;
+      return matchesSearch && matchesGrade;
+    });
+  }, [lessons, searchQuery, selectedGrade]);
+
+  // Sao chép liên kết bài học
+  const handleCopyLink = (lessonId: string) => {
+    const url = `${window.location.origin}/lesson/${lessonId}`;
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-100 font-sans p-4 md:p-8 space-y-10">
@@ -179,145 +214,205 @@ export default function HomePage() {
               </div>
 
               <div className="grid grid-cols-2 gap-3 pt-2">
-                <Link
-                  href="/student"
+                <a
+                  href="#lesson-list"
                   className="px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black text-center transition shadow-md flex items-center justify-center gap-1.5"
                 >
-                  <span>▶</span> Vào Học Ngay
-                </Link>
+                  <span>📖</span> Danh Sách Bài Học
+                </a>
                 <Link
-                  href="/student?view=practice"
+                  href="/student/practice"
                   className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-black text-center border border-emerald-500/30 transition flex items-center justify-center gap-1.5"
                 >
-                  <span>🔤</span> Ôn Flashcard
+                  <span>🎯</span> Ôn Tập & Bài Tập
                 </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* NÚT TÁC VỤ NỔI BẬT KHÁC */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Link
-            href="/teacher?tab=simulations"
-            className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 hover:border-cyan-400 hover:bg-slate-800 transition flex items-center gap-4 group"
-          >
-            <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 text-2xl group-hover:scale-110 transition-transform">
-              🔗
-            </div>
+        {/* DANH SÁCH BÀI GIẢNG ĐÃ TẠO */}
+        <section id="lesson-list" className="space-y-6 pt-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h4 className="text-sm font-extrabold text-white">Thêm URL / Mã Nhúng</h4>
-              <p className="text-[11px] text-slate-400 font-medium">Nhúng Canva, YouTube, Quizizz</p>
+              <h2 className="text-xl font-black text-white flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-blue-400" />
+                Kho Bài Giảng Số Khoa Học Tự Nhiên
+              </h2>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Các bài giảng đã biên soạn sẵn sàng trình chiếu hoặc chia sẻ cho học sinh
+              </p>
             </div>
-          </Link>
 
-          <Link
-            href="/teacher?tab=simulations"
-            className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 hover:border-purple-400 hover:bg-slate-800 transition flex items-center gap-4 group"
-          >
-            <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 text-2xl group-hover:scale-110 transition-transform">
-              🧫
-            </div>
-            <div>
-              <h4 className="text-sm font-extrabold text-white">Thí Nghiệm PhET</h4>
-              <p className="text-[11px] text-slate-400 font-medium">Mô phỏng Lý - Hóa - Sinh</p>
-            </div>
-          </Link>
+            {/* BỘ LỌC VÀ TÌM KIẾM */}
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Ô tìm kiếm */}
+              <div className="relative min-w-[220px]">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Tìm bài giảng..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl pl-9 pr-3 py-2.5 focus:outline-none focus:border-indigo-500 transition"
+                />
+              </div>
 
-          <Link
-            href="/teacher?tab=analytics"
-            className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 hover:border-yellow-400 hover:bg-slate-800 transition flex items-center gap-4 group"
-          >
-            <div className="p-3 rounded-xl bg-yellow-500/10 text-yellow-400 text-2xl group-hover:scale-110 transition-transform">
-              📊
+              {/* Lọc khối lớp */}
+              <div className="flex items-center gap-1.5 bg-slate-900 p-1 border border-slate-700 rounded-xl">
+                <Filter className="w-3.5 h-3.5 text-slate-400 ml-2" />
+                {['ALL', '6', '7', '8', '9'].map((grade) => (
+                  <button
+                    key={grade}
+                    onClick={() => setSelectedGrade(grade)}
+                    className={`px-2.5 py-1 text-xs font-bold rounded-lg transition ${
+                      selectedGrade === grade
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    }`}
+                  >
+                    {grade === 'ALL' ? 'Tất cả' : `Lớp ${grade}`}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div>
-              <h4 className="text-sm font-extrabold text-white">Tiến Độ Học Tập</h4>
-              <p className="text-[11px] text-slate-400 font-medium">Theo dõi kết quả học sinh</p>
-            </div>
-          </Link>
-        </section>
-
-        {/* DANH SÁCH BÀI GIẢNG ĐÃ LƯU */}
-        <section className="space-y-4 pt-2">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-extrabold text-slate-200 flex items-center gap-2">
-              <span className="text-blue-400">📚</span> Danh Sách Bài Giảng KHTN Đã Lưu ({lessons.length})
-            </h2>
-            <button
-              onClick={() => fetchLessons()}
-              disabled={loading}
-              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5 disabled:opacity-50"
-            >
-              🔄 {loading ? 'Đang tải...' : 'Làm mới'}
-            </button>
           </div>
 
-          {errorMsg && (
-            <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold">
-              ⚠️ {errorMsg}
-            </div>
-          )}
-
+          {/* HIỂN THỊ DỮ LIỆU */}
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {[1, 2, 3].map((n) => (
-                <div key={n} className="p-5 rounded-3xl bg-slate-900/60 border border-slate-800 animate-pulse space-y-4">
-                  <div className="h-5 bg-slate-800 rounded w-1/3"></div>
-                  <div className="h-6 bg-slate-800 rounded w-3/4"></div>
-                  <div className="pt-3 border-t border-slate-800 flex justify-between items-center">
-                    <div className="h-4 bg-slate-800 rounded w-1/4"></div>
-                    <div className="h-8 bg-slate-800 rounded w-1/3"></div>
-                  </div>
-                </div>
-              ))}
+            <div className="text-center py-16 bg-slate-900/50 rounded-3xl border border-slate-800 space-y-3">
+              <div className="inline-block animate-spin text-3xl">🌀</div>
+              <p className="text-slate-400 text-sm font-medium">Đang tải danh sách bài giảng...</p>
             </div>
-          ) : lessons.length > 0 ? (
+          ) : errorMsg ? (
+            <div className="p-6 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-400 text-sm text-center">
+              {errorMsg}
+            </div>
+          ) : filteredLessons.length === 0 ? (
+            <div className="text-center py-16 bg-slate-900/40 rounded-3xl border border-dashed border-slate-800 space-y-4">
+              <span className="text-5xl">📚</span>
+              <div className="space-y-1">
+                <h3 className="text-base font-bold text-slate-300">Chưa có bài giảng nào</h3>
+                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                  Hãy nhấn vào nút "Soạn Bài Mới Bằng AI" để bắt đầu tạo bài giảng tương tác đầu tiên của bạn.
+                </p>
+              </div>
+              <Link
+                href="/teacher"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl transition"
+              >
+                Tạo Bài Giảng Mới
+              </Link>
+            </div>
+          ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-             
-{lessons.map((item, index) => (
-  <div
-    key={item.id ? `${item.id}-${index}` : `lesson-item-${index}`}
-    className="p-5 rounded-3xl bg-slate-900 border border-slate-800 h-..."
-  >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-black bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                        KHTN Lớp {item.grade}
+              {filteredLessons.map((lesson) => (
+                <div
+                  key={lesson.id}
+                  className="bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 space-y-4 transition duration-300 hover:shadow-xl flex flex-col justify-between group"
+                >
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-start gap-2">
+                      <span className="px-2.5 py-1 rounded-md text-[10px] font-black uppercase bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                        {lesson.grade ? `KHTN Lớp ${lesson.grade}` : 'KHTN'}
                       </span>
-                      {item.slideCount && (
-                        <span className="text-[10px] text-slate-400 font-semibold bg-slate-800 px-2 py-0.5 rounded-md">
-                          📄 {item.slideCount} slides
-                        </span>
-                      )}
+                      <button
+                        onClick={(e) => handleDeleteLesson(lesson.id, e)}
+                        className="text-slate-600 hover:text-red-400 p-1 transition rounded-lg hover:bg-red-500/10"
+                        title="Xóa bài giảng này"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </div>
-                    <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors leading-snug line-clamp-2">
-                      {item.title}
+
+                    <h3 className="font-bold text-slate-100 text-base line-clamp-2 group-hover:text-indigo-300 transition-colors">
+                      {lesson.title}
                     </h3>
                   </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs text-slate-400 font-semibold">
-                    <span>📅 {item.createdAt ? new Date(item.createdAt).toLocaleDateString('vi-VN') : 'Mới cập nhật'}</span>
-                    <Link
-                      href={`/student?id=${item.id}`}
-                      className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold transition shadow-md flex items-center gap-1"
-                    >
-                      Mở Học ▶
-                    </Link>
+                  <div className="space-y-4 pt-2">
+                    <div className="flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-slate-800/80">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-slate-500" />
+                        <span>{lesson.createdAt || 'Mới cập nhật'}</span>
+                      </div>
+                      {lesson.slideCount && (
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <Layers className="w-3.5 h-3.5 text-slate-500" />
+                          <span>{lesson.slideCount} trang</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-5 gap-2">
+                      <Link
+                        href={`/lesson/${lesson.id}`}
+                        className="col-span-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold text-center rounded-xl transition flex items-center justify-center gap-1.5"
+                      >
+                        <span>▶</span> Trình Chiếu
+                      </Link>
+                      <button
+                        onClick={() => setActiveQrLesson({ id: lesson.id, title: lesson.title })}
+                        className="col-span-1 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl transition flex items-center justify-center"
+                        title="Tạo mã QR / Chia sẻ"
+                      >
+                        <QrCode className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
-            </div>
-          ) : (
-            <div className="border-2 border-dashed border-slate-800 rounded-3xl p-10 text-center bg-slate-900/40 space-y-3">
-              <span className="text-4xl opacity-70" role="img" aria-label="folder">📂</span>
-              <p className="text-slate-400 text-xs md:text-sm font-semibold">
-                Chưa có bài giảng nào được lưu. Bấm nút <strong className="text-indigo-400">"Soạn Bài Mới Bằng AI"</strong> ở trên để khởi tạo bài giảng đầu tiên!
-              </p>
             </div>
           )}
         </section>
       </main>
+
+      {/* MODAL MÃ QR & CHIA SẺ BÀI HỌC */}
+      {activeQrLesson && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full space-y-6 relative shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <button
+              onClick={() => setActiveQrLesson(null)}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white bg-slate-800 rounded-full transition"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="text-center space-y-1 pr-6">
+              <h3 className="font-black text-white text-base flex items-center justify-center gap-2">
+                <Share2 className="w-4 h-4 text-indigo-400" />
+                Chia Sẻ Bài Giảng
+              </h3>
+              <p className="text-xs text-slate-400 line-clamp-1">{activeQrLesson.title}</p>
+            </div>
+
+            {/* Mã QR */}
+            <div className="bg-white p-4 rounded-2xl flex justify-center items-center shadow-inner max-w-[200px] mx-auto">
+              <QRCodeSVG
+                value={`${typeof window !== 'undefined' ? window.location.origin : ''}/lesson/${activeQrLesson.id}`}
+                size={160}
+                level="H"
+                includeMargin={false}
+              />
+            </div>
+
+            <p className="text-[11px] text-center text-slate-400">
+              Học sinh sử dụng thiết bị di động quét mã QR trên để tham gia học trực tiếp.
+            </p>
+
+            {/* Nút Sao Chép Link */}
+            <div className="space-y-2">
+              <button
+                onClick={() => handleCopyLink(activeQrLesson.id)}
+                className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-2"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? 'Đã Sao Chép Liên Kết!' : 'Sao Chép Đường Link'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
