@@ -141,7 +141,7 @@ ${userRequirements ? `- Yêu cầu thêm từ giáo viên: ${userRequirements}` 
 
     // 3. Gọi Gemini API với cấu hình JSON Schema nghiêm ngặt
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.6-flash',
       contents: [
         {
           role: 'user',

@@ -36,6 +36,20 @@ let globalSimulations: CustomSimulation[] = [
     embedUrl: 'https://phet.colorado.edu/sims/html/forces-and-motion-basics/latest/forces-and-motion-basics_all.html?locale=vi',
     createdAt: new Date().toLocaleDateString('vi-VN'),
   },
+  {
+    "id": "1788674563918",
+    "title": "KHTN 9 - Bài 1",
+    "subject": "Khác",
+    "embedUrl": "https://dreadful-indigo-sirdtpp6.edgeone.dev/",
+    "createdAt": new Date().toLocaleDateString('vi-VN'),
+  }, 
+  {
+    "id": "1788674637838",
+    "title": "KHTN 9 - BÀI 3",
+    "subject": "Vật Lý",
+    "embedUrl": "https://khtn9-bai3-dpqmdcd57jr6.edgeone.dev/",
+    "createdAt": new Date().toLocaleDateString('vi-VN'),
+  },
 ];
 
 let globalLessons: LessonData[] = [];

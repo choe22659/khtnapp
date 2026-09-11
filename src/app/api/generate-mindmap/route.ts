@@ -79,9 +79,9 @@ export async function POST(request: Request) {
       4. Tất cả các đường nối edges đều phải liên kết đúng từ source (cha) đến target (con).
     `;
 
-    // Gọi mô hình gemini-2.5-flash với cấu hình responseSchema bắt buộc trả về JSON
+    // Gọi mô hình gemini-3.6-flash với cấu hình responseSchema bắt buộc trả về JSON
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.6-flash',
       contents: prompt,
       config: {
         responseMimeType: 'application/json',
